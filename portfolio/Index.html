@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunjan Rathore</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+   <div id="header">
+    <div class="container">
+        <nav>
+           <div class="title">
+            <p><span1>Gunjan's</span1> Portfolio Website</p>
+           </div>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <!-- <li><a href="#journey">Journey</a></li> -->
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>Web Developer</p>
+            <h1>Hi, I'm <span>Gunjan</span><br>Rathore</h1>
+        </div>
+    </div>
+   </div>
+   <!--------------about--------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/girl.gif">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am BTech-CSE 2nd year coding enthusiast .I am an executive member of the operations and management team at GDSC-CDGI for the session 2023-24. Currently,improving my technical skills by diving deep into Data Structure and Algorithms(DSA) with C++.I'm always looking for opportunities to improve and challenges myself in the world of technology.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                           <!-- <p class="tab-links">Experience</p>  -->
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>HTML/CSS/JAVASCRIPT</span><br></li>
+                                <li><span>C</span><br></li>
+                                <li><span>C++</span><br></li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2022-26</span><br>Btech-CSE from Chameli Devi Groups of Institutions</li>
+                                <li><span>2022</span><br>12th-94%</li>
+                                <li><span>2020</span><br>10th-89.6%</li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --------------portfolio------------- -->
+    <div id="journey">
+        <div class="container">
+            <h1 class="sub-title">My Journey</h1>
+            <div class="journey-list">
+                <div class="journey">
+                    <img src="images/c.jpg">
+                    <div class="layer">
+                        <h3>C</h3>
+                        <p>In my journey of learning C programming.I have gained a understanding of the fundamental concepts and principles.</p>
+                        <!-- <a href="#"><i class="fa-solid fa-square-up-right"></i></a> -->
+                    </div>
+                </div>
+                <div class="journey">
+                    <img src="images/cc.jpg">
+                    <div class="layer">
+                        <h3>C++</h3>
+                        <p>I've learned C++ basics, covering syntax, OOP principles, and standard library usage, making me capable of tackling programming tasks effectively.</p>
+                        <!-- <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a> -->
+                    </div>
+                </div>
+                <div class="journey">
+                    <img src="images/html.jpg">
+                    <div class="layer">
+                        <h3>HTML/CSS</h3>
+                        <p>I've acquired foundational knowledge in HTML and CSS, enabling me to create and style web content.</p>
+                        <!-- <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a> -->
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+<!-- -------------contact------------ -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p>rathoregunjan46@gmail.com</p>
+                <a href="https://www.linkedin.com/in/gunjan-rathore-a00261252" target=_self></a>
+                <div class="social-icons">
+                   
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required >
+                    <input type="email" name="Email" placeholder="Your Email" >
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>    
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+  
+        </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyY0nUHk4jDj4-vGHbg2KxqG5-xTdytWHUfkHUq6tveBy-sOLvF4ovCbIrfRJkJ79M6Qg/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeoutL(funtion(){
+                    msg.innerHTML = " "
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
